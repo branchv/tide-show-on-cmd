@@ -4,6 +4,7 @@ set -gx tide_kubectl_icon ⎈
 set -gx tide_show_kubectl_on kubectl stern
 
 mock commandline -poc printf
+set -gx _tide_side left
 set -l mock_item '
 mock kubectl "config view --minify --output" "echo context/namespace"
 _tide_item_kubectl && echo # append newline
