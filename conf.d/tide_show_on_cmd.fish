@@ -1,5 +1,6 @@
 # Bind space as our trigger to read the current command
-bind ' ' 'commandline -f expand-abbr; _tide_show_on_cmd; commandline -i " "'
+bind -M default ' ' 'commandline -f expand-abbr; _tide_show_on_cmd; commandline -i " "'
+bind -M insert ' ' 'commandline -f expand-abbr; _tide_show_on_cmd; commandline -i " "'
 
 # Wrap matching items to control when they are shown
 set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
@@ -19,5 +20,6 @@ function _tide_show_on_cmd_clear --on-event fish_preexec --on-event fish_cancel
 end
 
 function _tide_show_on_cmd_uninstall --on-event tide_show_on_cmd_uninstall
-    bind --erase " "
+    bind -M default --erase ' '
+    bind -M insert --erase ' '
 end
